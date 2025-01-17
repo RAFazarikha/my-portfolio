@@ -19,7 +19,7 @@ $body = "You have received a new message from your website contact form.\n\n"
     . "Subject: $m_subject\n\n"
     . "Message:\n$message";
 
-$headers = "From: no-reply@yourdomain.com\r\n"; // Ganti dengan domain Anda
+$headers = "From: https://rachmad-aziz-fazarikha.netlify.app/ \r\n"; // Ganti dengan domain Anda
 $headers .= "Reply-To: $email\r\n";
 $headers .= "MIME-Version: 1.0\r\n";
 $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
