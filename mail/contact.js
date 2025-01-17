@@ -1,5 +1,4 @@
 $(function () {
-
     $("#contactForm input, #contactForm textarea").jqBootstrapValidation({
         preventSubmit: true,
         submitError: function ($form, event, errors) {
@@ -11,7 +10,7 @@ $(function () {
             var subject = $("input#subject").val();
             var message = $("textarea#message").val();
 
-            $this = $("#sendMessageButton");
+            var $this = $("#sendMessageButton");
             $this.prop("disabled", true);
 
             $.ajax({
@@ -21,29 +20,25 @@ $(function () {
                     name: name,
                     email: email,
                     subject: subject,
-                    message: message
+                    message: message,
                 },
                 cache: false,
-                success: function () {
+                success: function (response) {
                     $('#success').html("<div class='alert alert-success'>");
-                    $('#success > .alert-success').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
-                            .append("</button>");
-                    $('#success > .alert-success')
-                            .append("<strong>Your message has been sent. </strong>");
-                    $('#success > .alert-success')
-                            .append('</div>');
+                    $('#success > .alert-success').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>")
+                        .append("<strong>Your message has been sent. </strong>")
+                        .append('</div>');
                     $('#contactForm').trigger("reset");
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
                     console.error("Error Details:", textStatus, errorThrown);
                     console.error("Response Text:", jqXHR.responseText);
                     $('#success').html("<div class='alert alert-danger'>");
-                    $('#success > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
-                            .append("</button>");
-                    $('#success > .alert-danger').append($("<strong>").text("Sorry " + name + ", it seems that our mail server is not responding. Please try again later!"));
-                    $('#success > .alert-danger').append('</div>');
+                    $('#success > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>")
+                        .append($("<strong>").text("Sorry " + name + ", it seems that our mail server is not responding. Please try again later!"))
+                        .append('</div>');
                     $('#contactForm').trigger("reset");
-                },                
+                },
                 complete: function () {
                     setTimeout(function () {
                         $this.prop("disabled", false);
