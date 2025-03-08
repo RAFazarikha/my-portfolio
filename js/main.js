@@ -104,6 +104,18 @@
         $(this).addClass('filter-active');
         portfolioIsotope.isotope({filter: $(this).data('filter')});
     });
+
+    // Sertifikat filter
+    var sertifikatIsotope = $('.sertifikat-container').isotope({
+        itemSelector: '.sertifikat-item',
+        layoutMode: 'fitRows'
+    });
+
+    $('#sertifikat-filter li').on('click', function () {
+        $("#sertifikat-filter li").removeClass('filter-active');
+        $(this).addClass('filter-active');
+        sertifikatIsotope.isotope({filter: $(this).data('filter')});
+    });
     
 })(jQuery);
 
